@@ -1,4 +1,4 @@
-# docker-swarm-infrastructure
+# Docker_EE
 
 ##### Hello!
 Here you can see small docker-swarm project. It will deploy the application as Docker stack app in the Docker Swarm cluster.
