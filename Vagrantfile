@@ -16,18 +16,18 @@ Vagrant.configure('2') do |config|
 
 
       if host[:netint] == 1
-        node.vm.network :public_network, bridge: 'eth1'
+        node.vm.network :public_network, bridge: 'RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller'
         node.vm.provision 'shell', path: 'jenkins_install.sh'
 #        config.vm.network "forwarded_port", guest: 8080, host: 8080
       end
 
       if host[:netint] == 2
-        node.vm.network :public_network, bridge: 'eth2'
+        node.vm.network :public_network, bridge: 'RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller'
         node.vm.provision 'shell', path: 'docker_install.sh'
       end
 
       if host[:netint] == 3
-        node.vm.network :public_network, bridge: 'eth3'
+        node.vm.network :public_network, bridge: 'RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller'
         node.vm.provision 'shell', path: 'docker_install.sh'
       end
 
