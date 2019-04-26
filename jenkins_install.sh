@@ -13,7 +13,13 @@ apt-get update -y -qq
 
 # JAVA #########################################################################
 echo -e "-- Installing JAVA packages\n"
+
 apt-get install openjdk-8-jdk -y
+#use this one to add repository
+#add-apt-repository ppa:openjdk-r/ppa
+#apt-get update
+#apt-get install openjdk-8-jre
+
 
 # JENKINS #########################################################################
 echo -e "-- Including Jenkins packages\n"
