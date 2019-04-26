@@ -12,4 +12,5 @@ For building our vitual infrastracture I use virtualbox and vagrant. So, let's g
 
 # Vagrant
 First of all, let's run vagrant init command line tool to create Vagrantfile. Vagrantfile is a ruby file used to configure CPU, Memory, Network, OS and so on for VirtualBox creation.
-![Image alt](https://github.com/Lenya59/Docker_EE/raw/master/screenshots/vagrant-init.jpeg)
+![vagrant-init](https://user-images.githubusercontent.com/30426958/56807499-b4f5ac00-6837-11e9-8fb0-86be6d79bc0c.png)
+
