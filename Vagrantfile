@@ -16,20 +16,26 @@ Vagrant.configure('2') do |config|
 
 
       if host[:netint] == 1
-        node.vm.network "private_network", ip: "192.168.10.11"
+        node.vm.network :public_network, bridge: 'eth1'
         node.vm.provision 'shell', path: 'jenkins_install.sh'
-        config.vm.network "forwarded_port", guest: 8080, host: 8080
+#        config.vm.network "forwarded_port", guest: 8080, host: 8080
       end
 
       if host[:netint] == 2
-        node.vm.vm.network "private_network", ip: "192.168.10.12"
+        node.vm.network :public_network, bridge: 'eth2'
         node.vm.provision 'shell', path: 'docker_install.sh'
       end
 
       if host[:netint] == 3
-        node.vm.network "private_network", ip: "192.168.10.13"
+        node.vm.network :public_network, bridge: 'eth3'
         node.vm.provision 'shell', path: 'docker_install.sh'
       end
+
+    end
+    config.vm.synced_folder '.', '/vagrant', type: 'virtualbox'
+    Vagrant::Config.run do |config|
+      config.vbguest.auto_update = false
+      config.vbguest.no_remote = true
     end
   end
 end

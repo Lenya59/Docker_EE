@@ -29,6 +29,3 @@ apt-get install jenkins -y -qq
 echo -e "-- ---------------- --"
 echo -e "-- END BOOTSTRAPING --"
 echo -e "-- ---------------- --"
-
-#JENKINS_STATUS
-service jenkins status
