@@ -9,3 +9,7 @@ Our infrastructure consist of 3 nodes: jenkinsmaster, swarmmaster, swarmslave1.
 * swarmslave1 - is a WORKER NODE of the Docker Swarm cluster. It includes installed Docker Enterprise Edition with Docker Swarm and Docker Compose
 
 For building our vitual infrastracture I use virtualbox and vagrant. So, let's get started
+
+# Vagrant
+First of all, let's run vagrant init command line tool to create Vagrantfile. Vagrantfile is a ruby file used to configure CPU, Memory, Network, OS and so on for VirtualBox creation.
+![Image alt](https://github.com/Lenya59/Docker_EE/raw/master/screenshots/vagrant-init.jpeg)
