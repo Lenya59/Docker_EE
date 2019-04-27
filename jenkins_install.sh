@@ -9,29 +9,32 @@ echo -e "-- ------------------ --\n"
 
 # BOX ##########################################################################
 echo -e "-- Updating packages list\n"
-apt-get update -y -qq
-
+yum install epel-release
+yum update
+reboot
+yum install wget
 # JAVA #########################################################################
 echo -e "-- Installing JAVA packages\n"
 
-apt-get install openjdk-8-jdk -y
-#use this one to add repository
-#add-apt-repository ppa:openjdk-r/ppa
-#apt-get update
-#apt-get install openjdk-8-jre
+yum install java-1.8.0-openjdk.x86_64
 
+java -version
 
 # JENKINS #########################################################################
 echo -e "-- Including Jenkins packages\n"
-wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | apt-key add - > /dev/null 2>&1
-sh -c "echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list"
+wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
 
 echo -e "-- Updating packages list\n"
-apt-get update -y -qq
+yum update
 echo -e "-- Installing Jenkins automation server\n"
-apt-get install jenkins -y -qq
+yum install jenkin
 
 # END ##########################################################################
 echo -e "-- ---------------- --"
 echo -e "-- END BOOTSTRAPING --"
 echo -e "-- ---------------- --"
+
+systemctl enable jenkins
+systemctl jenkins status

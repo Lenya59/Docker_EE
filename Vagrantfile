@@ -1,5 +1,5 @@
 hosts = [
-  { name: 'jenkinsmaster',   box: 'ubuntu/trusty64',	mem: 512, 	netint: 1 },
+  { name: 'jenkinsmaster',   box: 'centos/7',       	mem: 512, 	netint: 1 },
   { name: 'swarmmaster',     box: 'ubuntu/trusty64',	mem: 512,	  netint: 2 },
   { name: 'swarmslave1',     box: 'ubuntu/xenial64',	mem: 512,	  netint: 3 }
 ]
