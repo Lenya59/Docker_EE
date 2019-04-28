@@ -9,14 +9,14 @@ echo -e "-- ------------------ --\n"
 
 # BOX ##########################################################################
 echo -e "-- Updating packages list\n"
-yum install epel-release
+#yum install epel-release
 yum update
-reboot
+#reboot
 yum install wget
 # JAVA #########################################################################
 echo -e "-- Installing JAVA packages\n"
 
-yum install java-1.8.0-openjdk.x86_64
+yum install java-1.8.0-openjdk
 
 java -version
 
@@ -29,7 +29,7 @@ rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 echo -e "-- Updating packages list\n"
 yum update
 echo -e "-- Installing Jenkins automation server\n"
-yum install jenkin
+yum install jenkins
 
 # END ##########################################################################
 echo -e "-- ---------------- --"
