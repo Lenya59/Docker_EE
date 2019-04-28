@@ -18,13 +18,10 @@ echo -e "-- Installing JAVA packages\n"
 
 yum install java-1.8.0-openjdk
 
-java -version
-
 # JENKINS #########################################################################
 echo -e "-- Including Jenkins packages\n"
 wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-
 
 echo -e "-- Updating packages list\n"
 yum update
@@ -37,4 +34,4 @@ echo -e "-- END BOOTSTRAPING --"
 echo -e "-- ---------------- --"
 
 systemctl enable jenkins
-systemctl jenkins status
+systemctl status jenkins
