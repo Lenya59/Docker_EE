@@ -16,3 +16,6 @@ First of all, let's run vagrant init command line tool to create Vagrantfile. Va
 
 Ok, the above output shows that Vagrantfile is successfully created. Let's edit vagrantfile for our infrastructure. You can find edited Vagrantfile in this GitHub repository. Also, you need to create jenkins_install.sh and docker_install.sh files, which is needed to install the necessary tools on our nodes.
 
+![vagrantfile](https://user-images.githubusercontent.com/30426958/56863601-1ac16f80-69c1-11e9-9f71-71503067c245.png)
+
+The above file picture describes our infrastructure. I used centros\7 for jenkinsmaster node and ubuntu for swarmmaster  and swarmslave1 node. A quick note: to access the network, you need to use a public network and specify the name of your network adapter
