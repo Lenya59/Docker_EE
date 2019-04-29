@@ -18,17 +18,18 @@ Ok, the above output shows that Vagrantfile is successfully created. Let's edit 
 
 ![vagrantfile](https://user-images.githubusercontent.com/30426958/56931166-c9f86680-6ae7-11e9-9a4b-e6f8b91eb83b.png)
 
-The above file picture describes our infrastructure. I used centros\7 for jenkinsmaster node and ubuntu for swarmmaster  and swarmslave1 node. A quick note: to access the network, you need to use a public network and specify the name of your network adapter
+The above file picture describes our infrastructure. I used centros\7 for jenkinsmaster node and ubuntu for swarmmaster  and swarmslave1 node. 
+**A quick note:** to access the network, you need to use a public network and specify the name of your network adapter
 ### Tools
-Go on, let's check our nodes for the necessary tools. The firs node has installed Jenkins. You can see this in the console outputpresented below
+Go on, let's check our nodes for the necessary tools. The first node has installed Jenkins. You can see this in the console output presented below
 ![jenkinsmaster_bootstrap](https://user-images.githubusercontent.com/30426958/56929175-a03c4100-6ae1-11e9-9c8c-f52a42a27f44.png)
 
-You will get this console output after start up node swarmmaster. Also, it would be the same on swarmslave node.
+You will get next console output after start up node swarmmaster. Also, it would be the same on swarmslave node.
 
 ![swarmmaster_bootstrap](https://user-images.githubusercontent.com/30426958/56930708-56a22500-6ae6-11e9-8fc5-244fd028d8fe.png)
 
 #### UCP and DTR
-Next step is to install UCP and DTR on our swarmmaster node. More such interesting information you can find [here](https://docs.docker.com/ee/ucp/admin/install/ "Universal Control Plane"), and [here](https://docs.docker.com/ee/dtr/admin/install/ "Docker Trusted Registry")
+Next step is to install UCP and DTR on our swarmmaster node. More much interesting information you can find [here](https://docs.docker.com/ee/ucp/admin/install/ "Universal Control Plane"), and [here](https://docs.docker.com/ee/dtr/admin/install/ "Docker Trusted Registry")
 
 ###### UCP
 ```shell
@@ -43,4 +44,6 @@ docker container run --rm -it --name ucp \
   --interactive \
   --pod-cidr 172.17.0.0/16  \
   ```
+  **A quick note:** if your local networks intersect with the docker's networks, you need to use the --pod-cidr option, more information about it you will find [here](https://docs.docker.com/reference/ucp/3.1/cli/install/ "Options")
+
   
