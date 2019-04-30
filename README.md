@@ -46,4 +46,36 @@ docker container run --rm -it --name ucp \
   ```
   **A quick note:** if your local networks intersect with the docker's networks, you need to use the --pod-cidr option, more information about it you will find [here](https://docs.docker.com/reference/ucp/3.1/cli/install/ "Options")
 
+---
+
+🦎
+
+---
+ 
+ # Cluster
+ 
+ Next step is adding swarmmaster as jenkinsmaster slave via ssh. Before adding a slave, you need to install Java on it.
+ ```shell
+ sudo apt-get update
+ sudo apt-get install default-jdk
+  ```
+  Now you need to do ssh key authentication, so that the master can knock on the slave by SSH key.
   
+Go to master:
+```shell
+sudo su jenkins    *
+ssh-keygen -b 2048 -t rsa
+```
+On the slave node, create a user
+```shell
+sudo useradd -d /var/lib/jenkins jenkins
+```
+Be sure to write down your masters public key, which can be found in
+```shell
+/home/vagrant/.ssh/id_rsa.pub
+```
+After that, write the key in the "authorized_keys" file on the slave (path:/var/lib/jenkins/.ssh/)
+Well done. Now you can add a node to Jenkins. Go to Manage Jenkins - Manage Nodes - New Node. Specify the name and set - Permanent agent.Then home user jenkins - /var/lib/jenkins.Labels – slave. 
+
+Launch method - select Launch slave agents via SSH. Host - specify the hostname of the slave node and credits - click Add. Kind - specify SSH username with private key
+Username - jenkins (which we created upper)
