@@ -75,7 +75,19 @@ cat id_rsa.pub >> ~/.ssh/authorized_keys
 ```
 ![agent_ssh](https://user-images.githubusercontent.com/30426958/56965297-9d832f80-6b65-11e9-83a4-c7e9e03fd0c3.png)
 
-Well done. Now you can add a node to Jenkins. Go to Manage Jenkins - Manage Nodes - New Node. Specify the name and set - Permanent agent.Then home user jenkins - /var/lib/jenkins. Labels – slave. 
+Well done. Now you can add a node to Jenkins. Go to Manage Jenkins - Manage Nodes - New Node. Specify the name and set - Permanent agent.Then home user jenkins - home/vagrant. Labels – slave. 
 Launch method - select Launch slave agents via SSH. Host - specify the hostname of the slave node and credits - click Add. Kind - specify SSH username with private key
 
 Username - jenkins (which we created upper)
+
+
+
+
+Initialization of docker swarm cluster:
+
+![swarm_init](https://user-images.githubusercontent.com/30426958/56969044-0621da80-6b6d-11e9-890c-7ddcda010b04.png)
+
+
+Add slave node for docker swarm cluster
+
+![swarmslave_join](https://user-images.githubusercontent.com/30426958/56969151-3bc6c380-6b6d-11e9-9e09-cb25d0302984.png)
