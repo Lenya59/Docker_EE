@@ -19,7 +19,7 @@ Ok, the above output shows that Vagrantfile is successfully created. Let's edit 
 ![vagrantfile](https://user-images.githubusercontent.com/30426958/56931166-c9f86680-6ae7-11e9-9a4b-e6f8b91eb83b.png)
 
 The above file picture describes our infrastructure. I used centros\7 for jenkinsmaster node and ubuntu for swarmmaster  and swarmslave1 node. 
-**A quick note:** to access the network, you need to use a public network and specify the name of your network adapter
+**A useful note:** to access the network, you need to use a public network and specify the name of your network adapter
 ### Tools
 Go on, let's check our nodes for the necessary tools. The first node has installed Jenkins. You can see this in the console output presented below
 ![jenkinsmaster_bootstrap](https://user-images.githubusercontent.com/30426958/56929175-a03c4100-6ae1-11e9-9c8c-f52a42a27f44.png)
@@ -44,7 +44,7 @@ docker container run --rm -it --name ucp \
   --interactive \
   --pod-cidr 172.17.0.0/16  \
   ```
-  **A quick note:** if your local networks intersect with the docker's networks, you need to use the --pod-cidr option, more information about it you will find [here](https://docs.docker.com/reference/ucp/3.1/cli/install/ "Options")
+  **A useful note:** if your local networks intersect with the docker's networks, you need to use the --pod-cidr option, more information about it you will find [here](https://docs.docker.com/reference/ucp/3.1/cli/install/ "Options")
 
 ---
 
@@ -59,23 +59,23 @@ docker container run --rm -it --name ucp \
  sudo apt-get update
  sudo apt-get install default-jdk
   ```
-  Now you need to do ssh key authentication, so that the master can knock on the slave by SSH key.
   
 Go to master:
 ```shell
-sudo su jenkins    *
-ssh-keygen -b 2048 -t rsa
-```
-On the slave node, create a user
-```shell
-sudo useradd -d /var/lib/jenkins jenkins
+sudo su vagrant    
+ssh-keygen 
 ```
 Be sure to write down your masters public key, which can be found in
 ```shell
 /home/vagrant/.ssh/id_rsa.pub
 ```
-After that, write the key in the "authorized_keys" file on the slave (path:/var/lib/jenkins/.ssh/)
-Well done. Now you can add a node to Jenkins. Go to Manage Jenkins - Manage Nodes - New Node. Specify the name and set - Permanent agent.Then home user jenkins - /var/lib/jenkins.Labels – slave. 
+After that, write the key in the "authorized_keys" file on the slave (path:home/vagrant/.ssh/)
+```shell
+cat id_rsa.pub >> ~/.ssh/authorized_keys
+```
+![agent_ssh](https://user-images.githubusercontent.com/30426958/56965297-9d832f80-6b65-11e9-83a4-c7e9e03fd0c3.png)
 
+Well done. Now you can add a node to Jenkins. Go to Manage Jenkins - Manage Nodes - New Node. Specify the name and set - Permanent agent.Then home user jenkins - /var/lib/jenkins. Labels – slave. 
 Launch method - select Launch slave agents via SSH. Host - specify the hostname of the slave node and credits - click Add. Kind - specify SSH username with private key
+
 Username - jenkins (which we created upper)
