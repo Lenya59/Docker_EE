@@ -1,0 +1,21 @@
+The infrastructure contains 3 nodes:
+    • jenkinsmaster has installed Jenkins for jobs runs. swarmmaster node is a jenkinsmaster's slave where job will run;
+    • swarmmaster has installed Docker Enterprise Edition with Docker Swarm, Docker Compose, Universal Control Plane(UCP) and Docker Trusted Registry (DTR). This node is a MASTER NODE of the Docker Swarm cluster;
+    • swarmslave1 has installed Docker Enterprise Edition with Docker Swarm and Docker Compose. This node is a WORKER NODE of the Docker Swarm cluster;
+TASK
+    1. Create Vagrantfile which contains 3 nodes jenkinsmaster, swarmmaster and swarmslave1
+    2. Create jenkins_install.sh for jenkinsmaster bootstrap and docker_install.sh for swarmmaster and swarmslave1  bootstrap (use Docker EE with one month trial license).
+        ◦ https://docs.docker.com/ee/end-to-end-install/ Deploy Enterprise Edition on Linux servers
+        ◦ https://docs.docker.com/install/linux/docker-ee/ubuntu/ Get Docker EE for CentOS
+        ◦ https://docs.docker.com/install/linux/docker-ee/centos/ Get Docker EE for Ubuntu
+           Note: docker commands must run from sudo user without using sudo.
+    3. When bootstrap process has been done need to install UCP and DTR on the swarmmaster node.
+    4. Add swarmmaster as jenkinsmaster slave via ssh.
+    5. Initialize swarmmaster as a master node of the Docker Swarm cluster.
+    6. Add swarmslave1 as a worker node of the Docker Swarm cluster.
+    7. Deploy the application as Docker stack app in the Docker Swarm cluster.
+        ◦ Create the Job which can build Java Spring App ( https://github.com/sqshq/PiggyMetrics )
+        ◦ Note: this java project is being built by Maven builder, so you need to create a Maven builder in the Jenkins and use compile before docker stack deploy.
+        ◦ https://github.com/sqshq/piggymetrics/blob/master/pom.xml
+        ◦ https://github.com/sqshq/piggymetrics/blob/master/docker-compose.yml
+    8. Create a GitHub repo with Vagrantfile, docker_install.sh, jenkins_install.sh and README.md which contains a progress of each step + commands output and screens+outputs of Jenkins job and UCP of deployed app.
