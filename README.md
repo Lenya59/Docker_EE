@@ -78,9 +78,6 @@ cat id_rsa.pub >> ~/.ssh/authorized_keys
 Well done. Now you can add a node to Jenkins. Go to Manage Jenkins - Manage Nodes - New Node. Specify the name and set - Permanent agent.Then home user jenkins - home/vagrant. Labels – slave. 
 Launch method - select Launch slave agents via SSH. Host - specify the hostname of the slave node and credits - click Add. Kind - specify SSH username with private key
 
-Username - jenkins (which we created upper)
-
-
 
 
 Initialization of docker swarm cluster:
