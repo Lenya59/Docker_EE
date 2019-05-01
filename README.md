@@ -60,7 +60,7 @@ docker container run --rm -it --name ucp \
  sudo apt-get install default-jdk
   ```
   
-Go to master:
+Go to slave:
 ```shell
 sudo su vagrant    
 ssh-keygen 
@@ -73,7 +73,7 @@ After that, write the key in the "authorized_keys" file on the slave (path:home/
 ```shell
 cat id_rsa.pub >> ~/.ssh/authorized_keys
 ```
-![agent_ssh](https://user-images.githubusercontent.com/30426958/56965297-9d832f80-6b65-11e9-83a4-c7e9e03fd0c3.png)
+![image](https://user-images.githubusercontent.com/30426958/57023749-86167600-6c3b-11e9-8ead-bd7ff09a4c5c.png)
 
 Well done. Now you can add a node to Jenkins. Go to Manage Jenkins - Manage Nodes - New Node. Specify the name and set - Permanent agent.Then home user jenkins - home/vagrant. Labels – slave. 
 Launch method - select Launch slave agents via SSH. Host - specify the hostname of the slave node and credits - click Add. Kind - specify SSH username with private key
@@ -83,6 +83,12 @@ Launch method - select Launch slave agents via SSH. Host - specify the hostname 
 Initialization of docker swarm cluster:
 
 ![swarm_init](https://user-images.githubusercontent.com/30426958/56969044-0621da80-6b6d-11e9-890c-7ddcda010b04.png)
+
+Also you can use this command to generate token for worker node
+```shell
+docker swarm join-token worker
+```
+![join_token](https://user-images.githubusercontent.com/30426958/57021687-9cb9ce80-6c35-11e9-8801-4a4a8bfbd9dc.png)
 
 
 Add slave node for docker swarm cluster
