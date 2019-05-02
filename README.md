@@ -54,31 +54,34 @@ docker container run --rm -it --name ucp \
  
  # Cluster
  
+ ## Add ssh-slave node 
+ 
  Next step is adding swarmmaster as jenkinsmaster slave via ssh. Before adding a slave, you need to install Java on it.
  ```shell
  sudo apt-get update
- sudo apt-get install default-jdk
+ sudo apt-get install openjdk-8-jdk
   ```
   
-Go to slave:
+Let's go to slave and create private and public SSH keys. The following command creates the private key 'jenkinsAgent_rsa' and the public key 'jenkinsAgent_rsa.pub' 
 ```shell
 sudo su vagrant    
-ssh-keygen 
+ssh-keygen -t rsa -C "Jenkins agent key" -f "jenkinsAgent_rsa"
 ```
-Be sure to write down your masters public key, which can be found in
-```shell
-/home/vagrant/.ssh/id_rsa.pub
-```
-After that, write the key in the "authorized_keys" file on the slave (path:home/vagrant/.ssh/)
-```shell
-cat id_rsa.pub >> ~/.ssh/authorized_keys
-```
+Add the public SSH key to the list of authorized keys on the agent machine
+ ```shell
+ cat jenkinsAgent_rsa.pub >> ~/.ssh/authorized_keys
+ ```
+ Copy the private SSH key (~/.ssh/jenkinsAgent_rsa) from the agent machine to your textbook
+ 
 ![image](https://user-images.githubusercontent.com/30426958/57023749-86167600-6c3b-11e9-8ead-bd7ff09a4c5c.png)
 
-Well done. Now you can add a node to Jenkins. Go to Manage Jenkins - Manage Nodes - New Node. Specify the name and set - Permanent agent.Then home user jenkins - home/vagrant. Labels – slave. 
-Launch method - select Launch slave agents via SSH. Host - specify the hostname of the slave node and credits - click Add. Kind - specify SSH username with private key
+Well done. Now you can add a node to Jenkins. Go to Manage Jenkins - Manage Nodes - New Node. Specify the name and set - Permanent agent. Then home user jenkins - home/vagrant. Launch method - select Launch slave agents via SSH. Host - specify the hostname of the slave node and credits - click Add. Kind - specify SSH username with private key
 
+Congratulations!! Now you have your slave node for doing your jobs))
 
+![ssh-slave](https://user-images.githubusercontent.com/30426958/57112400-80f31d00-6d48-11e9-896c-6d29aa6c98cb.png)
+
+## Swarm-cluster
 
 Initialization of docker swarm cluster:
 
@@ -89,7 +92,6 @@ Also you can use this command to generate token for worker node
 docker swarm join-token worker
 ```
 ![join_token](https://user-images.githubusercontent.com/30426958/57021687-9cb9ce80-6c35-11e9-8801-4a4a8bfbd9dc.png)
-
 
 Add slave node for docker swarm cluster
 
