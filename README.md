@@ -42,7 +42,7 @@ docker container run --rm -it --name ucp \
   docker/ucp:3.1.6 install \
   --force-minimums \
   --interactive \
-  --pod-cidr 172.17.0.0/16  \
+  --pod-cidr 192.168.0.0/16  \
   ```
   **A useful note:** if your local networks intersect with the docker's networks, you need to use the --pod-cidr option, more information about it you will find [here](https://docs.docker.com/reference/ucp/3.1/cli/install/ "Options")
 
