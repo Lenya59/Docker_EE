@@ -98,4 +98,5 @@ Add slave node for docker swarm cluster
 ![swarmslave_join](https://user-images.githubusercontent.com/30426958/56969151-3bc6c380-6b6d-11e9-9e09-cb25d0302984.png)
 
 # Deploy
-Let's adopt that we have all needful for deoploying application and proceed to this step
+Let's adopt that we have all needful for deoploying application and proceed to this step.
+Next option is creating a Maven builder in the Jenkins because [deployed application](https://github.com/sqshq/PiggyMetrics "piggymetriks") is being built by Maven builder.
