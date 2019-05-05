@@ -80,7 +80,7 @@ Well done. Now you can add a node to Jenkins. Go to Manage Jenkins - Manage Node
 Congratulations!! Now you have your slave node for doing your jobs))
 
 ![ssh-slave](https://user-images.githubusercontent.com/30426958/57112400-80f31d00-6d48-11e9-896c-6d29aa6c98cb.png)
-
+[tip](https://devopscube.com/setup-slaves-on-jenkins-2/ "ssh-agent-setup")
 ## Swarm-cluster
 
 Initialization of docker swarm cluster:
