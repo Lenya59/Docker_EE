@@ -62,16 +62,24 @@ docker container run --rm -it --name ucp \
  sudo apt-get install openjdk-8-jdk
   ```
   
-Let's go to slave and create private and public SSH keys. The following command creates the private key 'jenkinsAgent_rsa' and the public key 'jenkinsAgent_rsa.pub' 
+Let's go to slave and create private and public SSH keys. The following command creates the private key 'The access key for Jenkins slaves' for accec to slave via ssh
 ```shell
-sudo su vagrant    
-ssh-keygen -t rsa -C "Jenkins agent key" -f "jenkinsAgent_rsa"
+sudo adduser jenkins --shell /bin/bashssh-keygen
+
+su jenkins
+
+mkdir /home/jenkins/jenkins_slave
+
+mkdir ~/.ssh && cd ~/.ssh
+
+
+ssh-keygen -t rsa -C "The access key for Jenkins slaves"
+
+cat id_rsa.pub > ~/.ssh/authorized_keys
+
+cat id_rsa
+
 ```
-Add the public SSH key to the list of authorized keys on the agent machine
- ```shell
- cat jenkinsAgent_rsa.pub >> ~/.ssh/authorized_keys
- ```
- Copy the private SSH key (~/.ssh/jenkinsAgent_rsa) from the agent machine to your textbook
  
 ![image](https://user-images.githubusercontent.com/30426958/57023749-86167600-6c3b-11e9-8ead-bd7ff09a4c5c.png)
 
