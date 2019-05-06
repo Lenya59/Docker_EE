@@ -47,6 +47,36 @@ docker container run --rm -it --name ucp \
   **A useful note:** if your local networks intersect with the docker's networks, you need to use the --pod-cidr option, more information about it you will find [here](https://docs.docker.com/reference/ucp/3.1/cli/install/ "Options")
 
 ---
+```shell
+Confirm Admin Password:
+INFO[0014] Pulling required images... (this may take a while)
+INFO[0014] Pulling docker/ucp-auth:2.2.4
+INFO[0018] Pulling docker/ucp-hrm:2.2.4
+INFO[0022] Pulling docker/ucp-controller:2.2.4
+INFO[0030] Pulling docker/ucp-swarm:2.2.4
+INFO[0034] Pulling docker/ucp-etcd:2.2.4
+INFO[0043] Pulling docker/ucp-agent:2.2.4
+INFO[0048] Pulling docker/ucp-compose:2.2.4
+INFO[0054] Pulling docker/ucp-metrics:2.2.4
+INFO[0062] Pulling docker/ucp-dsinfo:2.2.4
+INFO[0102] Pulling docker/ucp-cfssl:2.2.4
+INFO[0107] Pulling docker/ucp-auth-store:2.2.4
+WARN[0114] None of the hostnames we'll be using in the UCP certificates [swarmmaster 127.0.0.1 172.17.0.1 192.168.104.69] contain a domain component.  Your generated certs may fail TLS validation unless you only use one of these shortnames or IPs to connect.  You can use the --san flag to add more aliases
+
+You may enter additional aliases (SANs) now or press enter to proceed with the above list.
+Additional aliases:
+INFO[0000] Initializing a new swarm at 192.168.104.69
+INFO[0010] Establishing mutual Cluster Root CA with Swarm
+INFO[0013] Installing UCP with host address 192.168.104.69 - If this is incorrect, please specify an alternative address with the '--host-address' flag
+INFO[0013] Generating UCP Client Root CA
+INFO[0013] Deploying UCP Service
+INFO[0050] Installation completed on swarmmaster (node z4kky1uuf3uhgkmwot9u90f87)
+INFO[0050] UCP Instance ID: luzhqotsl7awa1l5hbk4lnwcc
+INFO[0050] UCP Server SSL: SHA-256 Fingerprint=88:AA:A7:38:0A:56:DD:D4:0F:ED:96:21:77:61:8C:46:18:DC:73:A7:3A:FF:F3:13:16:6D:C5:12:BD:A5:66:AE
+INFO[0050] Login to UCP at https://192.168.104.69:443
+INFO[0050] Username: leshik59
+INFO[0050] Password: (your admin password)
+```
 
 🦎
 
