@@ -8,7 +8,8 @@ echo -e "-- ------------------ --\n"
 # BOX ##########################################################################
 echo -e "-- Updating packages list\n"
 sudo yum update
-sudo yum install wget -y
+sudo yum install -y git mc groovy  wget 
+
 # JAVA #########################################################################
 echo -e "-- Installing JAVA packages\n"
 
