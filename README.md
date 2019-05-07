@@ -203,3 +203,237 @@ Add slave node for docker swarm cluster
 # Deploy
 Let's adopt that we have all needful for deoploying application and proceed to this step.
 Next option is creating a Maven builder in the Jenkins because [deployed application](https://github.com/sqshq/PiggyMetrics "piggymetriks") is being built by Maven builder.
+
+Let's create jenkins job which will deploy our application
+
+Source code management:
+
+![image](https://user-images.githubusercontent.com/30426958/57298802-b64a9280-70db-11e9-8a1b-06161b618386.png)
+
+Also you should chose build options
+
+![image](https://user-images.githubusercontent.com/30426958/57299679-d8451480-70dd-11e9-8cbd-674738ed7a63.png)
+
+
+
+```shell
+Started by user admin
+[EnvInject] - Loading node environment variables.
+Building remotely on ssh-slave (xenial) in workspace /var/lib/jenkins/workspace/Piggy
+using credential c1377648-be66-4676-9fbd-a5fdf0bc67ce
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/sqshq/piggymetrics.git # timeout=10
+Fetching upstream changes from https://github.com/sqshq/piggymetrics.git
+ > git --version # timeout=10
+using GIT_ASKPASS to set credentials GitHub
+ > git fetch --tags --progress https://github.com/sqshq/piggymetrics.git +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 20237e62b4305dc888aa55b61e1e103fbd3856bf (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 20237e62b4305dc888aa55b61e1e103fbd3856bf
+Commit message: "Merge pull request #48 from zuzhi/master"
+ > git rev-list --no-walk 20237e62b4305dc888aa55b61e1e103fbd3856bf # timeout=10
+[Piggy] $ /bin/sh -xe /tmp/jenkins6828677510483824087.sh
++ export CONFIG_SERVICE_PASSWORD
++ export NOTIFICATION_SERVICE_PASSWORD
++ export STATISTICS_SERVICE_PASSWORD
++ export ACCOUNT_SERVICE_PASSWORD
++ export MONGODB_PASSWORD
+[Piggy] $ /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_test_3.5.3/bin/mvn compile
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] piggymetrics                                                       [pom]
+[INFO] config                                                             [jar]
+[INFO] monitoring                                                         [jar]
+[INFO] registry                                                           [jar]
+[INFO] gateway                                                            [jar]
+[INFO] auth-service                                                       [jar]
+[INFO] account-service                                                    [jar]
+[INFO] statistics-service                                                 [jar]
+[INFO] notification-service                                               [jar]
+[INFO] turbine-stream-service                                             [jar]
+[INFO] 
+[INFO] -------------------< com.piggymetrics:piggymetrics >--------------------
+[INFO] Building piggymetrics 1.0-SNAPSHOT                                [1/10]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ----------------------< com.piggymetrics:config >-----------------------
+[INFO] Building config 1.0.0-SNAPSHOT                                    [2/10]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.1:resources (default-resources) @ config ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] Copying 8 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ config ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --------------------< com.piggymetrics:monitoring >---------------------
+[INFO] Building monitoring 0.0.1-SNAPSHOT                                [3/10]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.1:resources (default-resources) @ monitoring ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ monitoring ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ---------------------< com.piggymetrics:registry >----------------------
+[INFO] Building registry 0.0.1-SNAPSHOT                                  [4/10]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.1:resources (default-resources) @ registry ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ registry ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ----------------------< com.piggymetrics:gateway >----------------------
+[INFO] Building gateway 1.0-SNAPSHOT                                     [5/10]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.1:resources (default-resources) @ gateway ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] Copying 49 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ gateway ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -------------------< com.piggymetrics:auth-service >--------------------
+[INFO] Building auth-service 1.0-SNAPSHOT                                [6/10]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.7.6.201602180812:prepare-agent (default) @ auth-service ---
+[INFO] argLine set to -javaagent:/home/jenkins/.m2/repository/org/jacoco/org.jacoco.agent/0.7.6.201602180812/org.jacoco.agent-0.7.6.201602180812-runtime.jar=destfile=/var/lib/jenkins/workspace/Piggy/auth-service/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.1:resources (default-resources) @ auth-service ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ auth-service ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ------------------< com.piggymetrics:account-service >------------------
+[INFO] Building account-service 1.0-SNAPSHOT                             [7/10]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.7.6.201602180812:prepare-agent (default) @ account-service ---
+[INFO] argLine set to -javaagent:/home/jenkins/.m2/repository/org/jacoco/org.jacoco.agent/0.7.6.201602180812/org.jacoco.agent-0.7.6.201602180812-runtime.jar=destfile=/var/lib/jenkins/workspace/Piggy/account-service/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.1:resources (default-resources) @ account-service ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ account-service ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ----------------< com.piggymetrics:statistics-service >-----------------
+[INFO] Building statistics-service 1.0-SNAPSHOT                          [8/10]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.7.6.201602180812:prepare-agent (default) @ statistics-service ---
+[INFO] argLine set to -javaagent:/home/jenkins/.m2/repository/org/jacoco/org.jacoco.agent/0.7.6.201602180812/org.jacoco.agent-0.7.6.201602180812-runtime.jar=destfile=/var/lib/jenkins/workspace/Piggy/statistics-service/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.1:resources (default-resources) @ statistics-service ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ statistics-service ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ---------------< com.piggymetrics:notification-service >----------------
+[INFO] Building notification-service 1.0.0-SNAPSHOT                      [9/10]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.7.6.201602180812:prepare-agent (default) @ notification-service ---
+[INFO] argLine set to -javaagent:/home/jenkins/.m2/repository/org/jacoco/org.jacoco.agent/0.7.6.201602180812/org.jacoco.agent-0.7.6.201602180812-runtime.jar=destfile=/var/lib/jenkins/workspace/Piggy/notification-service/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.1:resources (default-resources) @ notification-service ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ notification-service ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --------------< com.piggymetrics:turbine-stream-service >---------------
+[INFO] Building turbine-stream-service 0.0.1-SNAPSHOT                   [10/10]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.1:resources (default-resources) @ turbine-stream-service ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ turbine-stream-service ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] piggymetrics 1.0-SNAPSHOT .......................... SUCCESS [  0.019 s]
+[INFO] config 1.0.0-SNAPSHOT .............................. SUCCESS [  4.413 s]
+[INFO] monitoring 0.0.1-SNAPSHOT .......................... SUCCESS [  1.263 s]
+[INFO] registry 0.0.1-SNAPSHOT ............................ SUCCESS [  1.046 s]
+[INFO] gateway ............................................ SUCCESS [  0.674 s]
+[INFO] auth-service ....................................... SUCCESS [  3.375 s]
+[INFO] account-service .................................... SUCCESS [  1.460 s]
+[INFO] statistics-service ................................. SUCCESS [  0.708 s]
+[INFO] notification-service 1.0.0-SNAPSHOT ................ SUCCESS [  0.800 s]
+[INFO] turbine-stream-service 0.0.1-SNAPSHOT .............. SUCCESS [  1.013 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 18.746 s
+[INFO] Finished at: 2019-05-07T13:14:48Z
+[INFO] ------------------------------------------------------------------------
+[Piggy] $ /bin/sh -xe /tmp/jenkins7913684931265432531.sh
++ docker stack deploy -c /vagrant/docker-compose.yml piggymetricks
+Ignoring unsupported options: restart
+
+Updating service piggymetricks_rabbitmq (id: rz2w18ofylae3p7ofhill8ave)
+Updating service piggymetricks_auth-service (id: v6r0ideat7d43esv9g98xoben)
+Updating service piggymetricks_statistics-mongodb (id: inetm5rm66nau7tx05ee18hro)
+Updating service piggymetricks_account-service (id: osqqlsay1d2xjwar8wrz5eo2o)
+Updating service piggymetricks_account-mongodb (id: zb51453j4oepxdbjysxns89zy)
+Updating service piggymetricks_auth-mongodb (id: 170mgoibhchfkswqny6wxdes7)
+Updating service piggymetricks_statistics-service (id: agsgqp7zwdgd0i7kbdmn7kjkx)
+Updating service piggymetricks_gateway (id: ss0cybshqrhtyr96p6xfnkv51)
+Updating service piggymetricks_notification-mongodb (id: u51xkhgwot9r98q4mg6kdfjb7)
+Updating service piggymetricks_monitoring (id: odz7sgiyb8tb43qf6jhao5vgi)
+Updating service piggymetricks_registry (id: jww7te0fi2kbf494o02r6do8l)
+Updating service piggymetricks_notification-service (id: ulboy8awkz2kmzrt31an4sll1)
+Updating service piggymetricks_config (id: zwt9o7wmmjjagmwjqqo05xhut)
++ docker service ls
+ID                  NAME                                 MODE                REPLICAS            IMAGE                                            PORTS
+zb51453j4oep        piggymetricks_account-mongodb        replicated          1/1                 sqshq/piggymetrics-mongodb:latest                
+osqqlsay1d2x        piggymetricks_account-service        replicated          1/1                 sqshq/piggymetrics-account-service:latest        
+170mgoibhchf        piggymetricks_auth-mongodb           replicated          0/1                 sqshq/piggymetrics-mongodb:latest                
+v6r0ideat7d4        piggymetricks_auth-service           replicated          1/1                 sqshq/piggymetrics-auth-service:latest           
+zwt9o7wmmjja        piggymetricks_config                 replicated          1/1                 sqshq/piggymetrics-config:latest                 
+ss0cybshqrht        piggymetricks_gateway                replicated          0/1                 sqshq/piggymetrics-gateway:latest                *:80->4000/tcp
+odz7sgiyb8tb        piggymetricks_monitoring             replicated          0/1                 sqshq/piggymetrics-monitoring:latest             *:8989->8989/tcp, *:9000->8080/tcp
+u51xkhgwot9r        piggymetricks_notification-mongodb   replicated          0/1                 sqshq/piggymetrics-mongodb:latest                
+ulboy8awkz2k        piggymetricks_notification-service   replicated          1/1                 sqshq/piggymetrics-notification-service:latest   
+rz2w18ofylae        piggymetricks_rabbitmq               replicated          1/1                 rabbitmq:3-management                            *:15672->15672/tcp
+jww7te0fi2kb        piggymetricks_registry               replicated          0/1                 sqshq/piggymetrics-registry:latest               *:8761->8761/tcp
+inetm5rm66na        piggymetricks_statistics-mongodb     replicated          0/1                 sqshq/piggymetrics-mongodb:latest                
+agsgqp7zwdgd        piggymetricks_statistics-service     replicated          1/1                 sqshq/piggymetrics-statistics-service:latest     
+rqwhxql8meco        ucp-agent                            global              2/2                 docker/ucp-agent:2.2.4                           
+endvluu9aqpq        ucp-agent-s390x                      global              0/0                 docker/ucp-agent-s390x:2.2.4                     
+mokbyilc0p0p        ucp-agent-win                        global              0/0                 docker/ucp-agent-win:2.2.4                       
+Finished: SUCCESS
+```
+
